@@ -41,8 +41,8 @@ struct mgos_stlm75 {
 
 struct mgos_stlm75 *mgos_stlm75_create(struct mgos_i2c *i2c, uint16_t addr);
 
-void mgos_stlm75_init(struct mgos_stlm75 *ctx, struct mgos_i2c *i2c,
-                      uint16_t addr);
+void mgos_stlm75_init_ctx(struct mgos_stlm75 *ctx, struct mgos_i2c *i2c,
+                          uint16_t addr);
 
 bool mgos_stlm75_read_temp(struct mgos_stlm75 *ctx, float *temp);
 

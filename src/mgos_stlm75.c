@@ -39,12 +39,12 @@ static uint16_t temp_to_reg_val(float temp) {
 struct mgos_stlm75 *mgos_stlm75_create(struct mgos_i2c *i2c, uint16_t addr) {
   if (i2c == NULL) return NULL;
   struct mgos_stlm75 *ctx = (struct mgos_stlm75 *) calloc(1, sizeof(*ctx));
-  if (ctx != NULL) mgos_stlm75_init(ctx, i2c, addr);
+  if (ctx != NULL) mgos_stlm75_init_ctx(ctx, i2c, addr);
   return ctx;
 }
 
-void mgos_stlm75_init(struct mgos_stlm75 *ctx, struct mgos_i2c *i2c,
-                      uint16_t addr) {
+void mgos_stlm75_init_ctx(struct mgos_stlm75 *ctx, struct mgos_i2c *i2c,
+                          uint16_t addr) {
   ctx->i2c = i2c;
   ctx->addr = addr;
 }
@@ -88,4 +88,8 @@ bool mgos_stlm75_shutdown(struct mgos_stlm75 *ctx, bool shutdown) {
 
 void mgos_stlm75_free(struct mgos_stlm75 *ctx) {
   free(ctx);
+}
+
+bool mgos_stlm75_init(void) {
+  return true;
 }
