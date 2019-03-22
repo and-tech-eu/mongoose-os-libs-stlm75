@@ -19,8 +19,6 @@
 
 #include <stdlib.h>
 
-#include "common/cs_dbg.h"
-
 #define MGOS_STLM75_REG_TEMP 0
 #define MGOS_STLM75_REG_CONF 1
 #define MGOS_STLM75_REG_TOS 2
@@ -73,11 +71,6 @@ bool mgos_stlm75_set_alarm(struct mgos_stlm75 *ctx, float hi, float lo,
                               (cfg >> 1))) {
     return false;
   }
-  LOG(LL_INFO,
-      ("Set %04x %04x %02x",
-       mgos_i2c_read_reg_w(ctx->i2c, ctx->addr, MGOS_STLM75_REG_TOS),
-       mgos_i2c_read_reg_w(ctx->i2c, ctx->addr, MGOS_STLM75_REG_THYS),
-       mgos_i2c_read_reg_b(ctx->i2c, ctx->addr, MGOS_STLM75_REG_CONF)));
   return true;
 }
 
